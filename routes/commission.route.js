@@ -37,6 +37,9 @@ router.post('/commission',(req, res, next)=> {
     });
 });
 
+module.exports = router;
+
+
 
 
 

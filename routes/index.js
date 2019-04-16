@@ -16,7 +16,7 @@ router.get('/customer/:id',(req,res,next)=> {
   axios.get('http://86.96.197.228:9003/tawkeel/api/pros/'+req.params.id)
   .then(response => {
     console.log(response);
-    res.status(200).json(response);
+    res.status(200).send(response);
   })
   .catch( error => {
     console.log(error);
