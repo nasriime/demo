@@ -1,0 +1,25 @@
+{   
+    "staff": [
+        {
+            "id": 1,
+            "name": "Robert",
+            "department": "Frontend Developer"
+        },
+        {
+            "id": 2,
+            "name": "Abanob",
+            "department": "Frontend Developer"
+        },
+        {
+            "id": 3,
+            "name": "Hager",
+            "department": "Frontend Developer"
+        },
+        {
+            "id": 4,
+            "name": "Nasr",
+            "department": "Frontend Developer"
+        }
+    ]
+}
+    
