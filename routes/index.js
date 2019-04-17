@@ -12,18 +12,19 @@ router.get('/staff',(req, res, next)=> {
   res.status(200).json(staff);
 });
 
-router.get('/customer/:id',(req,res,next)=> {
-  axios.get('http://86.96.197.228:9003/tawkeel/api/pros/'+req.params.id)
-  .then(response => {
-    res.status(200).send(response);
-  })
-  .catch( error => {
+router.get('/customer/:id', async(req,res,next) => {
+  try {
+    const link = 'http://86.96.197.228:9003/tawkeel/api/pros/';
+    const data = await axios.get( link + req.params.id);
+    console.log('data', data)
+    res.status(200).json(data.data);
+  } catch(error){
     res.send(error);
-  });
+  }
 });
 
 router.post('/customer', async(req,res,next) => {
-  try{
+  try {
     const link = 'http://86.96.197.228:9003/tawkeel/api/pros';
     const obj = {
       "proNameAr" : req.body.proNameAr,
@@ -49,10 +50,9 @@ router.post('/customer', async(req,res,next) => {
 
     // console.log('data nowwwww',data);
     res.json(data)
-  }catch (error){
+  } catch(error){
     console.log(error);
   }
- 
-})
+});
 
 module.exports = router;
