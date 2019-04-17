@@ -1,6 +1,6 @@
 const axios = require('axios');
 const express = require('express');
-const staff = require('../public/javascripts/staff.json');
+const data = require('../public/javascripts/staff.json');
 const router = express.Router();
 
 /* GET home page. */
@@ -10,7 +10,7 @@ router.get('/', (req, res, next)=> {
 
 // GET staff from local JSON file
 router.get('/staff',(req, res, next)=> {
-  res.status(200).json(staff);
+  res.status(200).json(data.staff);
 });
 
 // GET customer from external REST API
