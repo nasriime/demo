@@ -25,7 +25,7 @@ router.get('/customer/:id', async(req,res,next) => {
 
 router.post('/customer', async(req,res,next) => {
   try {
-    const link = 'http://86.96.197.228:9003/tawkeel/api/pros';
+    const link = 'http://86.96.197.228:9003/tawkeel/api/pros/';
     const obj = {
       "proNameAr" : req.body.proNameAr,
       "proNameEn" : req.body.proNameEn,
@@ -47,11 +47,10 @@ router.post('/customer', async(req,res,next) => {
           "Content-Type": "application/json",
         }
       });
-
-    // console.log('data nowwwww',data);
-    res.json(data)
+    res.status(201).json(data.data)
   } catch(error){
     console.log(error);
+    res.json(error);
   }
 });
 
