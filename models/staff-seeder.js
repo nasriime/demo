@@ -6,11 +6,8 @@ mongoose.connect('mongodb://localhost:27017/demo', { useNewUrlParser: true });
 
 let done = 0;
 for (let i = 0; i < staff.length; i++) {
-    let staff = new Staff({
-        id : staff[i].id,
-        name: staff[i].name,
-        department: staff[i].department
-    });
+    console.log(staff[i])
+    let staff = new Staff(staff[i]);
     staff.save(function(err, result) {
         done++;
         if (done === staff.length) {

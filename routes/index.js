@@ -8,10 +8,12 @@ router.get('/', (req, res, next)=> {
   res.render('index', { title: 'Express' });
 });
 
+// GET staff from local JSON file
 router.get('/staff',(req, res, next)=> {
   res.status(200).json(staff);
 });
 
+// GET customer from external REST API
 router.get('/customer/:id', async(req,res,next) => {
   try {
     const link = 'http://86.96.197.228:9003/tawkeel/api/pros/';
@@ -23,6 +25,7 @@ router.get('/customer/:id', async(req,res,next) => {
   }
 });
 
+// POST customer to external REST API
 router.post('/customer', async(req,res,next) => {
   try {
     const link = 'http://86.96.197.228:9003/tawkeel/api/pros/';

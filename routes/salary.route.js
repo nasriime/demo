@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Salary = require('../models/salary.model');
 
-router.get('/salary', (req, res, next) => {
+router.get('/', (req, res, next) => {
     Salary.find({}, (err, salaries) =>{
         if (err){
           res.send(err);
@@ -12,7 +12,7 @@ router.get('/salary', (req, res, next) => {
     });
 });
 
-router.get('/salary/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     Salary.findById( req.params.id , (err, salaries) => {
         if (err){
           res.send(err);
@@ -22,7 +22,7 @@ router.get('/salary/:id', (req, res, next) => {
     });
 });
 
-router.post('/salary',(req, res, next) => {
+router.post('/',(req, res, next) => {
     const newSalary = new Salary({
         amount: req.body.amount,
         staffId: req.body.staffId,
@@ -30,7 +30,7 @@ router.post('/salary',(req, res, next) => {
     
     newSalary.save((err, Salary) => {
         if(err){
-            res.send('Error has occured');
+            res.send(err);
         }else{
             res.status(200).json(Salary);
         }

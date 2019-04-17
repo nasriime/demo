@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Commision = require('../models/commission.model');
 
-router.get('/commission',(req, res, next)=> {
+router.get('/',(req, res, next)=> {
     Commision.find({}, (err, commisions) =>{
         if (err){
           res.send(err);
@@ -12,7 +12,7 @@ router.get('/commission',(req, res, next)=> {
       });
 });
 
-router.get('/commission/:id',(req, res, next)=> {
+router.get('/:id',(req, res, next)=> {
     Commision.findById(req.params.id , (err, commisions) =>{
         if (err){
           res.send(err);
@@ -22,7 +22,7 @@ router.get('/commission/:id',(req, res, next)=> {
     });
 });
 
-router.post('/commission',(req, res, next)=> {
+router.post('/',(req, res, next)=> {
     const newCommision = new Commision({
         amount: req.body.amount,
         staffId: req.body.staffId,
