@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const commissionSchema = new Schema({
     amount: Number,
-    staffId: {
+    staff: {
         ref: 'Staff',
         type: mongoose.Schema.Types.ObjectId
     }

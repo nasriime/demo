@@ -1,38 +1,35 @@
 var express = require('express');
 var router = express.Router();
-const Salary = require('../models/salary.model');
+const Staff = require('../models/staff.model');
 
 router.get('/', (req, res, next) => {
-    Salary.find({})
-    .populate('staff')
-    .exec((err, salaries) =>{
+    Staff.find({}, (err, staff) =>{
         if (err){
           res.send(err);
         } else {
-          res.status(200).json(salaries);
+          res.status(200).json(staff);
         }
     });
 });
 
 router.get('/:id', (req, res, next) => {
-    Salary.findById( req.params.id )
-    .populate('staff')
-    .exec((err, salaries) => {
+    Staff.findOne( {id: req.params.id } , (err, staff) => {
         if (err){
           res.send(err);
         } else {
-          res.status(200).json(salaries);
+          res.status(200).json(staff);
         }
     });
 });
 
 router.post('/',(req, res, next) => {
-    const newSalary = new Salary({
-        amount: req.body.amount,
-        staff: req.body.staff,
+    const newStaff = new Staff({
+        id: req.body.id,
+        name: req.body.name,
+        department: req.body.department
     });
     
-    newSalary.save((err, Salary) => {
+    newStaff.save((err, Salary) => {
         if(err){
             res.send(err);
         }else{

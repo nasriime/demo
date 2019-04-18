@@ -3,17 +3,21 @@ const router = express.Router();
 const Commision = require('../models/commission.model');
 
 router.get('/',(req, res, next)=> {
-    Commision.find({}, (err, commisions) =>{
-        if (err){
-          res.send(err);
-        } else {
-          res.status(200).json(commisions);
-        }
-      });
+    Commision.find({})
+    .populate('staff')
+    .exec((err, commisions) =>{
+      if (err){
+        res.send(err);
+      } else {
+        res.status(200).json(commisions);
+      }
+    });
 });
 
 router.get('/:id',(req, res, next)=> {
-    Commision.findById(req.params.id , (err, commisions) =>{
+    Commision.findById(req.params.id )
+    .populate('staff')
+    .exec((err, commisions) =>{
         if (err){
           res.send(err);
         } else {
@@ -25,7 +29,7 @@ router.get('/:id',(req, res, next)=> {
 router.post('/',(req, res, next)=> {
     const newCommision = new Commision({
         amount: req.body.amount,
-        staffId: req.body.staffId,
+        staff: req.body.staff,
     });
     
     newCommision.save((err, commission) => {

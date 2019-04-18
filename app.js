@@ -6,12 +6,13 @@ const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/demo')
+mongoose.connect('mongodb://localhost/demo', { useNewUrlParser: true });
 
 
 const indexRouter = require('./routes/index');
 const salaryRouter = require('./routes/salary.route');
 const commissionRouter = require('./routes/commission.route');
+const staffRouter = require('./routes/staff.route');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/salary', salaryRouter);
 app.use('/commission', commissionRouter);
+app.use('/staff', staffRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
