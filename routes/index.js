@@ -3,16 +3,6 @@ const express = require('express');
 const data = require('../public/javascripts/staff.json');
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', (req, res, next)=> {
-  res.render('index', { title: 'Express' });
-});
-
-// GET staff from local JSON file
-router.get('/staff',(req, res, next)=> {
-  res.status(200).json(data.staff);
-});
-
 // GET customer from external REST API
 router.get('/customer/:id', async(req,res,next) => {
   try {
