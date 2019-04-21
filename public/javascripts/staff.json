@@ -1,24 +1,28 @@
 {   
     "staff": [
         {
-            "id": 1,
             "name": "Robert",
-            "department": "Frontend Developer"
+            "department": "Frontend-Developer"
         },
         {
-            "id": 2,
+            "name": "Mina",
+            "department": "Backend-Developer"
+        },
+        {
             "name": "Abanob",
-            "department": "Frontend Developer"
+            "department": "Frontend-Developer"
         },
         {
-            "id": 3,
+            "name": "Abdel Rahman",
+            "department": "Backend-Developer"
+        },
+        {
             "name": "Hager",
-            "department": "Frontend Developer"
+            "department": "Frontend-Developer"
         },
         {
-            "id": 4,
-            "name": "Nasr",
-            "department": "Frontend Developer"
+            "name": "Ahmed",
+            "department": "QC-Engineer"
         }
     ]
 }
