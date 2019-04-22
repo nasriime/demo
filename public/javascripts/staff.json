@@ -2,27 +2,33 @@
     "staff": [
         {
             "name": "Robert",
-            "department": "Frontend-Developer"
+            "department": "Frontend-Developer",
+            "commission": 2000
         },
         {
             "name": "Mina",
-            "department": "Backend-Developer"
+            "department": "Backend-Developer",
+            "commission": 5000
         },
         {
             "name": "Abanob",
-            "department": "Frontend-Developer"
+            "department": "Frontend-Developer",
+            "commission": 7000
         },
         {
             "name": "Abdel Rahman",
-            "department": "Backend-Developer"
+            "department": "Backend-Developer",
+            "commission": 9000
         },
         {
             "name": "Hager",
-            "department": "Frontend-Developer"
+            "department": "Frontend-Developer",
+            "commission": 8000
         },
         {
             "name": "Ahmed",
-            "department": "QC-Engineer"
+            "department": "QC-Engineer",
+            "commission": 1000
         }
     ]
 }

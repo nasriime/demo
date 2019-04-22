@@ -4,6 +4,8 @@ const CommisionController = require('../controllers/commission.controller')
 
 router.get('/', CommisionController.get_all_commissions);
 
+router.get('/department', CommisionController.get_department);
+
 router.get('/:id', CommisionController.get_commission_by_id);
 
 router.post('/', CommisionController.add_commission );

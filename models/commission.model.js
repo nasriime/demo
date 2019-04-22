@@ -5,7 +5,7 @@ const commissionSchema = new Schema({
     amount: Number,
     staff: {
         ref: 'Staff',
-        type: mongoose.Schema.Types.ObjectId
+        type: Schema.Types.ObjectId
     }
 });
 

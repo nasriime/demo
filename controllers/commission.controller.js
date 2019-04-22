@@ -12,6 +12,47 @@ exports.get_all_commissions = (req, res, next)=> {
     });
 }
 
+exports.get_department = (req, res, next)=>{
+  const deptName = req.query.deptName;
+    if( deptName ){
+      Commision.aggregate([
+            {
+                $match: { 
+                    department: deptName 
+                }
+            },
+            {
+              $group: { 
+                  _id: "$department",
+                  sum: {"$sum": "$staff.commission"}}
+          }
+            // {
+            //    $lookup: {from: 'Staff', localField: 'amount', foreignField: 'department', as: 'total'} 
+            // }
+        ], (err, staff) =>{
+            if (err){
+              res.send(err);
+            } else {
+              res.status(200).json(staff);
+            }
+        });
+    }else{
+      Commision.aggregate([
+            {
+                $group: { 
+                    _id: "$amount",
+                    count: {"$sum": 1}}
+            }
+        ], (err, staff) =>{
+            if (err){
+              res.send(err);
+            } else {
+              res.status(200).json(staff);
+            }
+        });
+    }
+}
+
 exports.get_commission_by_id = (req, res, next)=> {
     Commision.findById(req.params.id )
     .populate('staff')
