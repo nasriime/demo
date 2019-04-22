@@ -1,15 +1,34 @@
 const Staff = require('../models/staff.model');
-const staffSeeder = require('../models/staff-seeder');
+const data = require('../public/javascripts/staff.json');
 
 exports.get_all_staff = (req, res, next) => {
-    staffSeeder.seeder();
-    Staff.find({}, (err, staff) =>{
-        if (err){
-          res.send(err);
-        } else {
-          res.status(200).json(staff);
+    if(req.params.new == 1){
+        let done = 0;
+        for (let i = 0; i < data.staff.length; i++) {
+            let staff = new Staff(data.staff[i]);
+            staff.save(function(err, result) {
+                done++;
+                if (done === data.staff.length) {
+                    Staff.find({}, (err, staff) =>{
+                        if (err){
+                          res.send(err);
+                        } else {
+                          res.status(200).json(staff);
+                        }
+                    });
+                }
+            });
         }
-    });
+    }else{
+        Staff.find({}, (err, staff) =>{
+            if (err){
+              res.send(err);
+            } else {
+              res.status(200).json(staff);
+            }
+        });
+    }
+    
 }
 
 exports.get_department = (req, res, next) => {
@@ -63,7 +82,6 @@ exports.get_staff_by_id = (req, res, next) => {
 
 exports.add_staff = (req, res, next) => {
     const newStaff = new Staff({
-        id: req.body.id,
         name: req.body.name,
         department: req.body.department
     });

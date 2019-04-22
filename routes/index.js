@@ -8,7 +8,6 @@ router.get('/customer/:id', async(req,res,next) => {
   try {
     const link = 'http://86.96.197.228:9003/tawkeel/api/pros/';
     const data = await axios.get( link + req.params.id);
-    console.log('data', data)
     res.status(200).json(data.data);
   } catch(error){
     res.send(error);
@@ -42,7 +41,6 @@ router.post('/customer', async(req,res,next) => {
       });
     res.status(201).json(data.data)
   } catch(error){
-    console.log(error);
     res.json(error);
   }
 });
