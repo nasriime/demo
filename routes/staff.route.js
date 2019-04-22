@@ -8,6 +8,8 @@ router.get('/department', StaffController.get_department);
 
 router.get('/commission', StaffController.get_commission);
 
+router.get('/salary', StaffController.get_salary);
+
 router.get('/:id', StaffController.get_staff_by_id);
 
 router.post('/', StaffController.add_staff);

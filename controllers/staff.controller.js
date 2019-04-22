@@ -110,6 +110,46 @@ exports.get_commission = (req, res, next) =>{
    
 }
 
+exports.get_salary = (req, res, next) =>{
+
+    const deptName = req.query.deptName;
+    if( deptName ){
+        Staff.aggregate([
+            {
+                $match: { 
+                    department: deptName 
+                }
+            },
+            {
+                $group: { 
+                    _id: "$department",
+                    count: {"$sum": "$salary"}}
+            }
+        ], (err, staff) =>{
+            if (err){
+              res.send(err);
+            } else {
+              res.status(200).json(staff);
+            }
+        });
+    }else{
+        Staff.aggregate([
+            {
+                $group: { 
+                    _id: "$department",
+                    count: {"$sum": "$salary"}}
+            }
+        ], (err, staff) =>{
+            if (err){
+              res.send(err);
+            } else {
+              res.status(200).json(staff);
+            }
+        });
+    }
+   
+}
+
 exports.get_staff_by_id = (req, res, next) => {
     Staff.findOne( {id: req.params.id } , (err, staff) => {
         if (err){

@@ -3,31 +3,37 @@
         {
             "name": "Robert",
             "department": "Frontend-Developer",
+            "salary": 2000,
             "commission": 2000
         },
         {
             "name": "Mina",
             "department": "Backend-Developer",
+            "salary": 2000,
             "commission": 5000
         },
         {
             "name": "Abanob",
             "department": "Frontend-Developer",
+            "salary": 2000,
             "commission": 7000
         },
         {
             "name": "Abdel Rahman",
             "department": "Backend-Developer",
+            "salary": 2000,
             "commission": 9000
         },
         {
             "name": "Hager",
             "department": "Frontend-Developer",
+            "salary": 2000,
             "commission": 8000
         },
         {
             "name": "Ahmed",
             "department": "QC-Engineer",
+            "salary": 2000,
             "commission": 1000
         }
     ]
