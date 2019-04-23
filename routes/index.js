@@ -1,6 +1,5 @@
 const axios = require('axios');
 const express = require('express');
-const data = require('../public/javascripts/staff.json');
 const router = express.Router();
 
 // GET customer from external REST API
