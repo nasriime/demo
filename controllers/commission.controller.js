@@ -17,18 +17,24 @@ exports.get_department = (req, res, next)=>{
     if( deptName ){
       Commision.aggregate([
             {
-                $match: { 
-                    department: deptName 
-                }
+              $match: { 
+                department: deptName 
+              }
+            },
+            {
+             $lookup: {
+                from: 'staffs',
+                localField: 'department',
+                foreignField: 'department',
+                as: 'staff'
+              } 
             },
             {
               $group: { 
-                  _id: "$department",
-                  sum: {"$sum": "$staff.commission"}}
-          }
-            // {
-            //    $lookup: {from: 'Staff', localField: 'amount', foreignField: 'department', as: 'total'} 
-            // }
+                _id: "$department",
+                sum: {"$sum": "$staff.commission"}}
+            }
+          
         ], (err, staff) =>{
             if (err){
               res.send(err);
