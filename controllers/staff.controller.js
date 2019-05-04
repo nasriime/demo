@@ -19,7 +19,7 @@ exports.get_all_staff = (req, res, next) => {
                 }
             });
         }
-    }else{
+    }else if(req.params.new == 0){
         Staff.find({}, (err, staff) =>{
             if (err){
               res.send(err);
@@ -27,7 +27,10 @@ exports.get_all_staff = (req, res, next) => {
               res.status(200).json(staff);
             }
         });
+    }else{
+        res.status(400).send({err:'please pass 0 or 1'});
     }
+
     
 }
 
