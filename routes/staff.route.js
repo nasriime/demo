@@ -12,6 +12,8 @@ router.get('/salary', StaffController.get_salary);
 
 router.get('/:id', StaffController.get_staff_by_id);
 
+router.put('/:id', StaffController.update_staff);
+
 router.post('/', StaffController.add_staff);
 
 module.exports = router;

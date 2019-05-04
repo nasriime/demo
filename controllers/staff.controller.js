@@ -1,7 +1,7 @@
 const Staff = require('../models/staff.model');
 const data = require(process.env.JSON);
 
-exports.get_all_staff = (req, res, next) => {
+exports.get_all_staff = (req, res, next) =>{
     if(req.params.new == 1){
         let done = 0;
         for (let i = 0; i < data.staff.length; i++) {
@@ -34,7 +34,7 @@ exports.get_all_staff = (req, res, next) => {
     
 }
 
-exports.get_department = (req, res, next) => {
+exports.get_department = (req, res, next) =>{
     const deptName = req.query.deptName;
     if( deptName ){
         Staff.aggregate([
@@ -153,27 +153,30 @@ exports.get_salary = (req, res, next) =>{
    
 }
 
-exports.get_staff_by_id = (req, res, next) => {
+exports.update_staff = (req, res, next)=>{
+    Staff
+    .findOneAndUpdate({ _id: req.params.id }, req.body , {new: true})
+    .exec(function(err, staff){
+      if(err) return res.status(500).json({err: err.message})
+      res.status(200).json(staff)
+    })
+};
+
+exports.get_staff_by_id = (req, res, next) =>{
     Staff.findOne( {id: req.params.id } , (err, staff) => {
-        if (err){
-          res.send(err);
-        } else {
-          res.status(200).json(staff);
-        }
+        if (err) return res.send(err);
+        res.status(200).json(staff);
     });
 }
 
-exports.add_staff = (req, res, next) => {
+exports.add_staff = (req, res, next) =>{
     const newStaff = new Staff({
         name: req.body.name,
         department: req.body.department
     });
     
     newStaff.save((err, Salary) => {
-        if(err){
-            res.send(err);
-        }else{
-            res.status(200).json(Salary);
-        }
+        if(err) return res.send(err);
+        res.status(200).json(Salary);
     });
 }
