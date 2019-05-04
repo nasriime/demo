@@ -2,39 +2,27 @@
     "staff": [
         {
             "name": "Robert",
-            "department": "Frontend Developer",
-            "salary": 2000,
-            "commission": 2000
+            "department": "Frontend Developer"
         },
         {
             "name": "Mina",
-            "department": "Backend Developer",
-            "salary": 2000,
-            "commission": 5000
+            "department": "Backend Developer"
         },
         {
             "name": "Abanob",
-            "department": "Frontend Developer",
-            "salary": 2000,
-            "commission": 7000
+            "department": "Frontend Developer"
         },
         {
             "name": "Abdel Rahman",
-            "department": "Backend Developer",
-            "salary": 2000,
-            "commission": 9000
+            "department": "Backend Developer"
         },
         {
             "name": "Hager",
-            "department": "Frontend Developer",
-            "salary": 2000,
-            "commission": 8000
+            "department": "Frontend Developer"
         },
         {
             "name": "Ahmed",
-            "department": "Software Tester",
-            "salary": 2000,
-            "commission": 1000
+            "department": "Software Tester"
         }
     ]
 }
