@@ -4,9 +4,13 @@ const Schema = mongoose.Schema;
 const staffSchema = new Schema({
     name: String,
     department: String,
+    salary:{
+        type: Number,
+        required: false
+    },
     commission: {
-        ref: 'Commission',
-        type: Schema.Types.ObjectId
+        type: Number,
+        required: false
     }
 });
 

@@ -1,5 +1,5 @@
 const Staff = require('../models/staff.model');
-const data = require('../public/javascripts/staff.json');
+const data = require(process.env.JSON);
 
 exports.get_all_staff = (req, res, next) => {
     if(req.params.new == 1){
